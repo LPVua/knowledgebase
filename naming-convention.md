@@ -13,7 +13,7 @@ const CURRENT_DATE = moment().format("YYYY/MM/DD"); // bad - not a constant
 const CARS_COUNT = 10; // bad - not a constant (cars count is specific to a context)
 const millisecondsInDay = 86400000; // bad - constant
 
-const MILLISECONDS_IN_A_DAY = 86400000; // good - constant (day has defined number of miliseconds)
+const MILLISECONDS_IN_DAY = 86400000; // good - constant (day has defined number of miliseconds)
 const currentDate = moment().format("YYYY/MM/DD"); // good - not a constant
 
 ```
