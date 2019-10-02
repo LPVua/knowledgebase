@@ -34,14 +34,14 @@ Use explanatory variables, avoid using direct array indexes
 
 ```ts
 const address = "One Infinite Loop, Cupertino 95014";
-const addresSplitterRegex = /^[^,\\]+[,\\\s]+(.+?)\s*(\d{5})?$/;
+const addressMatcherRegex = /^[^,\\]+[,\\\s]+(.+?)\s*(\d{5})?$/;
 
 saveCityZipCode(
-  address.match(addresSplitterRegex)[1], // bad - hides method argument name
-  address.match(addresSplitterRegex)[2] // bad - hides method argument name
+  address.match(addressMatcherRegex)[1], // bad - hides method argument name
+  address.match(addressMatcherRegex)[2] // bad - hides method argument name
 );
 
-const [, city, zipCode] = address.match(addresSplitterRegex) || []; // destruct city and zip code from splitted address 
+const [, city, zipCode] = address.match(addressMatcherRegex) || []; // destruct city and zip code from splitted address 
 saveCityZipCode(city, zipCode); // good - preserves argument names
 ```
 
@@ -82,6 +82,42 @@ const milisecondsTillBlastOff = 86400000;
 
 setTimeout(blastOff, milisecondsTillBlastOff); // good now we have more context
 ```
+
+## Regex variables
+
+For regex variables use Regex suffix. We recommend to use additional regex type names in your variable name, such as `Splitter`, `Validator`, `Replacer`, `Matcher`, etc.
+
+Here 
+ - `Splitter` - would be used for splitting the string to pieces using `split` method
+ - `Validator` - would be used for testing the string on validity using `test` method
+ - `Replacer` - would be used for replacing the matched text in the sring using `replace` method
+ - `Matcher` - would be used for getting match using `match` method
+ 
+
+```ts
+  const address = "One Infinite Loop, Cupertino 95014";
+  const addressMatcherRegex = /^[^,\\]+[,\\\s]+(.+?)\s*(\d{5})?$/;
+  const [, city, zipCode] = address.match(addressMatcherRegex);
+  
+  const phone = '000-0000';
+  const phoneNumberSplitterRegex = /-/;
+  const [code, phoneNumber] = phone.split(phoneNumberSplitterRegex);
+  
+  const price = '3000';
+  const numberValidatorRegex = /^[0-9]$/;
+  const isPriceValid = numberValidatorRegex.test(price);
+  
+  const fieldReplacerRegex = /\{([a-zA-Z]+)\}/
+  const fieldNames = {
+    price: 'Price',
+    value: 0,
+  };
+  const errorLabel = 'The value of {price} should be bigger than {value}'.replace(
+    fieldReplacerRegex, 
+    (...[, fieldName]) => fieldNames[fieldName],
+  );
+```
+
 ## Arrays
 
 Arrays are an iterable list of items, usually of the same type. 
