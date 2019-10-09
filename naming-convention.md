@@ -3,7 +3,7 @@
 This is the set of rules for naming code constructs such as constants, variables, 
 functions, function arguments, object methods and properties
 
-## Constants
+## Constants (To be checked by code reviewer)
 
 Use capitalized named constants. Remember, in js const and constant are not the same!
 A constant is a primitive value that is inheriently fixed and won't be changed in feature
