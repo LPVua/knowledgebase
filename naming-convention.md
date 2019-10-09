@@ -160,7 +160,7 @@ const isOpened = (popupId: string): boolean => openedPopups[popupId] // bad - is
 const checkIsOpened = (popupId: string): boolean => openedPopups[popupId] // good
 ```
 
-## Numbers
+## Numbers (should be checked by code reviewer)
 
 For numbers, think about words that describe numbers. Use words like maximum, minimum, total.
 
