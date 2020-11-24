@@ -18,6 +18,7 @@ code --install-extension thenikso.github-plus-theme
 code --install-extension WakaTime.vscode-wakatime
 code --install-extension whatwedo.twig
 code --install-extension wix.vscode-import-cost
+code --install-extension indent-rainbow
 ```
 
 ## Config
